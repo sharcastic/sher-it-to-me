@@ -14,9 +14,7 @@ import {
 
 const PostPreview = ({ linkURL, title, description, image }) => {
   const [showActualImage, setShowImage] = useState(false);
-  const onImageLoad = () => {
-    setShowImage(true);
-  };
+  const onImageLoad = () => setShowImage(true);
   const onAnchorClick = e => {
     if (!linkURL) {
       e.preventDefault();

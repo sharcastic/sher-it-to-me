@@ -1,10 +1,10 @@
 import React from 'react';
 import PostPreview from './PostPreview';
 import { withKnobs, text } from '@storybook/addon-knobs';
+import { withA11y } from '@storybook/addon-a11y';
 
 const PreviewWithImageProps = {
-  image:
-    'https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png',
+  image: 'https://d24cgw3uvb9a9h.cloudfront.net/static/94014/image/thumb.png',
   linkURL: 'https://guardian.co.uk',
   title: 'Title',
   description: 'Description'
@@ -15,8 +15,16 @@ export default {
   component: PostPreview,
   decorators: [
     withKnobs,
+    withA11y,
     storyFn => (
-      <div style={{ width: '300px', fontFamily: 'Goldplay-Regular' }}>
+      <div
+        style={{
+          width: '300px',
+          fontFamily: 'Goldplay-Regular',
+          margin: 'auto',
+          'padding-top': '20px'
+        }}
+      >
         {storyFn()}
       </div>
     )
@@ -31,6 +39,6 @@ export const PreviewWithImage = () => (
   />
 );
 
-export const PreviewWithABrokenURL = () => (
+export const PreviewWithABrokenURLOrWhenLoading = () => (
   <PostPreview {...PreviewWithImageProps} image="broken" />
 );
