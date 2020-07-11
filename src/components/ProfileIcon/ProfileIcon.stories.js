@@ -1,12 +1,10 @@
 import React from 'react';
 import ProfileIcon from './ProfileIcon';
-import { withA11y } from '@storybook/addon-a11y';
 
 export default {
   title: 'Profile Icon',
   component: ProfileIcon,
   decorators: [
-    withA11y,
     storyFn => (
       <div
         style={{

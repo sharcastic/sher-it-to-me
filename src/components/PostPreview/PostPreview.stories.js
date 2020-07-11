@@ -1,7 +1,6 @@
 import React from 'react';
 import PostPreview from './PostPreview';
 import { withKnobs, text } from '@storybook/addon-knobs';
-import { withA11y } from '@storybook/addon-a11y';
 
 const PreviewWithImageProps = {
   image: 'https://d24cgw3uvb9a9h.cloudfront.net/static/94014/image/thumb.png',
@@ -15,7 +14,6 @@ export default {
   component: PostPreview,
   decorators: [
     withKnobs,
-    withA11y,
     storyFn => (
       <div
         style={{

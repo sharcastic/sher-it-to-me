@@ -1,13 +1,12 @@
 import React from 'react';
 import OptionsPanel, { PanelItem } from './OptionsPanel';
-import { withA11y } from '@storybook/addon-a11y';
+
 import { ReactComponent as OptionsIcon } from '../../assets/icons/options.svg';
 
 export default {
   title: 'Options Panel',
   component: OptionsPanel,
   decorators: [
-    withA11y,
     storyFn => (
       <div
         style={{
