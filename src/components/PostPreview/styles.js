@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   height: fit-content;
   position: relative;
+  color: white;
 `;
 
 export const Background = styled.div`
@@ -22,7 +23,6 @@ export const PostInfo = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,13 +39,13 @@ export const LinkDetails = styled.div`
 export const AnchorTag = styled.div`
   display: flex;
   flex-direction: column;
-  color: white;
   text-decoration: none;
   cursor: pointer;
+  color: inherit;
 
   span {
     overflow: hidden;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     display: -webkit-box;
   }
@@ -67,4 +67,10 @@ export const CoverImage = styled.img`
   border-radius: 8px;
   object-fit: cover;
   display: ${props => (props.hidden ? 'none' : 'initial')};
+`;
+
+export const TopSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 0 10px;
 `;

@@ -39,6 +39,13 @@ export const PreviewWithImage = () => (
   />
 );
 
+export const PreviewWithImageAndTopSection = () => (
+  <PostPreview
+    {...PreviewWithImageProps}
+    topSection={<span>Created By Bojack!</span>}
+  />
+);
+
 export const PreviewWithABrokenURLOrWhenLoading = () => (
   <PostPreview {...PreviewWithImageProps} image="broken" />
 );

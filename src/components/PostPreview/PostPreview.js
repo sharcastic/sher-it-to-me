@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { string } from 'prop-types';
+import { string, node } from 'prop-types';
 
 import DefaultImage from '../../assets/icons/previewMissing.svg';
 
@@ -9,10 +9,11 @@ import {
   PostInfo,
   LinkDetails,
   AnchorTag,
-  CoverImage
+  CoverImage,
+  TopSection
 } from './styles';
 
-const PostPreview = ({ linkURL, title, description, image }) => {
+const PostPreview = ({ linkURL, title, description, image, topSection }) => {
   const [showActualImage, setShowImage] = useState(false);
   const onImageLoad = () => setShowImage(true);
   const onAnchorClick = e => {
@@ -24,6 +25,7 @@ const PostPreview = ({ linkURL, title, description, image }) => {
     <Container>
       <Background />
       <PostInfo>
+        <TopSection>{topSection}</TopSection>
         <LinkDetails>
           <AnchorTag
             href={linkURL}
@@ -53,14 +55,16 @@ PostPreview.propTypes = {
   title: string,
   description: string,
   image: string,
-  linkURL: string
+  linkURL: string,
+  topSection: node
 };
 
 PostPreview.defaultProps = {
   title: '',
   description: '',
   image: '',
-  linkURL: ''
+  linkURL: '',
+  topSection: null
 };
 
 export default PostPreview;

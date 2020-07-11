@@ -3,7 +3,7 @@ import ProfileIcon from './ProfileIcon';
 import { withA11y } from '@storybook/addon-a11y';
 
 export default {
-  title: 'Post Preview',
+  title: 'Profile Icon',
   component: ProfileIcon,
   decorators: [
     withA11y,
@@ -23,10 +23,7 @@ export default {
 };
 
 export const ProfileIconWithImage = () => (
-  <ProfileIcon
-    className="class"
-    img="https://cdn1.iconfinder.com/data/icons/office-222/91/General_Office_33-512.png"
-  />
+  <ProfileIcon className="class" img="https://i.imgflip.com/4/4t0m5.jpg" />
 );
 
 export const ProfileIconWithABrokenURLOrWhenLoading = () => <ProfileIcon />;
