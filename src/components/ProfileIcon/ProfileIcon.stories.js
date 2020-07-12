@@ -11,7 +11,7 @@ export default {
           width: '50px',
           height: '50px',
           margin: 'auto',
-          'padding-top': '20px'
+          paddingTop: '20px'
         }}
       >
         {storyFn()}

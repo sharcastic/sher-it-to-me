@@ -14,7 +14,7 @@ export default {
           width: 'fit-content',
           fontFamily: 'Goldplay-Regular',
           margin: 'auto',
-          'padding-top': '20px'
+          paddingTop: '20px'
         }}
       >
         {storyFn()}

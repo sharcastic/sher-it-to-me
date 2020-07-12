@@ -26,6 +26,7 @@ export const UrlContent = styled.div`
 `;
 
 export const UrlText = styled.p`
+  margin: 0;
   font-size: 1rem;
   overflow: hidden;
   white-space: nowrap;
@@ -44,7 +45,15 @@ export const UrlText = styled.p`
 `;
 
 export const DescriptionText = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  ${({ lineClamp }) =>
+    lineClamp &&
+    `
+  overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+  `}
 `;
 
 export const IconRow = styled.div`

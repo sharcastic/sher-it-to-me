@@ -32,7 +32,4 @@ export const StyledHiddenComponent = styled.div`
 
 export const StyledPanelItem = styled.li`
   cursor: pointer;
-  &:hover {
-    background-color: blanchedalmond;
-  }
 `;

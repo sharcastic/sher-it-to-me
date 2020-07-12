@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { array, string, func } from 'prop-types';
+import { array, string, func, number } from 'prop-types';
 
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import { ReactComponent as HttpsIcon } from '../../assets/icons/https.svg';
@@ -26,16 +26,15 @@ const PostDetails = ({
   taggedUsers,
   comments,
   tags,
-  onCopy
+  onCopy,
+  descriptionLineClamp,
+  selectedPanel,
+  modifySelectedPanel
 }) => {
-  const [selectedPanel, setSelectedPanel] = useState();
   const toggleExtraPanel = panel => () => {
-    if (!selectedPanel || panel !== selectedPanel) {
-      setSelectedPanel(panel);
-    } else {
-      setSelectedPanel();
-    }
+    modifySelectedPanel(panel);
   };
+
   const onCopyClick = () =>
     navigator.clipboard.writeText(link).then(() => {
       onCopy();
@@ -53,14 +52,16 @@ const PostDetails = ({
             style={{ cursor: 'pointer' }}
           />
         </UrlContent>
-        <DescriptionText>{description}</DescriptionText>
+        <DescriptionText lineClamp={descriptionLineClamp}>
+          {description}
+        </DescriptionText>
       </UrlContainer>
       <IconRow>
         <IconSections>
           <IconContainer
             active={selectedPanel === 'comments'}
             onClick={toggleExtraPanel('comments')}
-            style={{ 'margin-right': '30px' }}
+            style={{ marginRight: '30px' }}
           >
             <CommentIcon title="Comment Icon" />
             <NumberSpan>{comments.length}</NumberSpan>
@@ -79,8 +80,8 @@ const PostDetails = ({
             onClick={toggleExtraPanel('friends')}
           >
             <PeopleIconContainer>
-              {taggedUsers.slice(0, 3).map(({ image }) => (
-                <ProfileIcon img={image} />
+              {taggedUsers.slice(0, 3).map(({ image }, index) => (
+                <ProfileIcon img={image} key={index} />
               ))}
             </PeopleIconContainer>
             <NumberSpan>
@@ -99,7 +100,10 @@ PostDetails.propTypes = {
   taggedUsers: array,
   comments: array,
   tags: array,
-  onCopy: func
+  onCopy: func,
+  descriptionLineClamp: number,
+  selectedPanel: string.isRequired,
+  modifySelectedPanel: func.isRequired
 };
 
 PostDetails.defaultProps = {
@@ -108,7 +112,8 @@ PostDetails.defaultProps = {
   taggedUsers: [],
   comments: [],
   tags: [],
-  onCopy: () => {}
+  onCopy: () => alert('Link Copied!'),
+  descriptionLineClamp: 0
 };
 
 export default PostDetails;
