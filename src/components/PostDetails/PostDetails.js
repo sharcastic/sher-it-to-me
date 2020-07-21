@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { array, string, func, number } from 'prop-types';
 
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
@@ -29,10 +29,11 @@ const PostDetails = ({
   onCopy,
   descriptionLineClamp,
   selectedPanel,
-  modifySelectedPanel
+  changeActiveLinkDetails,
+  id
 }) => {
   const toggleExtraPanel = panel => () => {
-    modifySelectedPanel(panel);
+    changeActiveLinkDetails(id, panel);
   };
 
   const onCopyClick = () =>
@@ -43,11 +44,11 @@ const PostDetails = ({
     <PostDetailsContainer>
       <UrlContainer>
         <UrlContent>
-          <HttpsIcon title="HTTPS Icon" className="link-info__url__httpsIcon" />
+          <HttpsIcon title="HTTPS Icon" className="httpsIcon" />
           <UrlText>{link}</UrlText>
           <CopyIcon
             title="Copy Icon"
-            className="link-info__url__copyIcon"
+            className="copyIcon"
             onClick={onCopyClick}
             style={{ cursor: 'pointer' }}
           />
@@ -103,7 +104,7 @@ PostDetails.propTypes = {
   onCopy: func,
   descriptionLineClamp: number,
   selectedPanel: string.isRequired,
-  modifySelectedPanel: func.isRequired
+  changeActiveLinkDetails: func.isRequired
 };
 
 PostDetails.defaultProps = {

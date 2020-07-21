@@ -22,6 +22,10 @@ export const UrlContent = styled.div`
     fill: turquoise;
     width: 14px;
     height: 14px;
+
+    &.httpsIcon {
+      margin-right: 5px;
+    }
   }
 `;
 

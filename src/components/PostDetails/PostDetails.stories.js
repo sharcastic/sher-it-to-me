@@ -32,12 +32,13 @@ export default {
 };
 
 export const DefaultPostDetails = () => {
-  const [selectedPanel, setSelectedPanel] = useState('');
-  const modifySelectedPanel = panel => {
-    if (!selectedPanel || panel !== selectedPanel) {
-      setSelectedPanel(panel);
+  const [activeLinkDetails, setActiveLinkDetails] = useState({});
+  const changeActiveLinkDetails = (linkId, selectedPanel) => {
+    const { panel, id } = activeLinkDetails;
+    if (id === linkId && selectedPanel === panel) {
+      setActiveLinkDetails({}); 
     } else {
-      setSelectedPanel('');
+      setActiveLinkDetails({ id: linkId, panel: selectedPanel });
     }
   };
   return (
@@ -47,8 +48,9 @@ export const DefaultPostDetails = () => {
       comments={['comments?']}
       taggedUsers={[{ image: 'url', name: 'User 1' }]}
       onCopy={() => alert('Link Copied!')}
-      selectedPanel={selectedPanel}
-      modifySelectedPanel={modifySelectedPanel}
+      selectedPanel={activeLinkDetails.panel}
+      id='1'
+      changeActiveLinkDetails={changeActiveLinkDetails}
     />
   );
 };

@@ -19,20 +19,11 @@ import { ReactComponent as DeleteIcon } from '../../assets/icons/delete.svg';
 import { ReactComponent as EditIcon } from '../../assets/icons/edit.svg';
 import { ReactComponent as ShareIcon } from '../../assets/icons/share.svg';
 
-const LinkCard = ({ previewData, postData }) => {
-  const [selectedPanel, setSelectedPanel] = useState('');
-  const modifySelectedPanel = panel => {
-    if (!selectedPanel || panel !== selectedPanel) {
-      setSelectedPanel(panel);
-    } else {
-      setSelectedPanel('');
-    }
-  };
+const LinkCard = ({ previewData, postData, id, activeLinkDetails, changeActiveLinkDetails}) => {
   const [time, date] = getTimeAndDate(new Date());
   if (previewData) {
     return (
       <Post>
-        {/* previewData === undefined && <LinkCardLoader /> */}
         <PostPreview
           image={previewData.image}
           linkURL={previewData.link}
@@ -86,14 +77,15 @@ const LinkCard = ({ previewData, postData }) => {
           }
         />
         <PostDetails
-          selectedPanel={selectedPanel}
-          modifySelectedPanel={modifySelectedPanel}
+          selectedPanel={activeLinkDetails.panel}
+          changeActiveLinkDetails={changeActiveLinkDetails}
           descriptionLineClamp={2}
           description={postData.description}
           link={postData.link}
           comments={postData.comments}
           taggedUsers={postData.taggedUsers}
           tags={postData.tags}
+          id={id}
         />
       </Post>
     );

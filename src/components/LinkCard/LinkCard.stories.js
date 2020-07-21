@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LinkCard from './LinkCard';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
@@ -40,10 +40,25 @@ const postData = {
   description: 'Post Description'
 };
 
-export const DefaultLinkCard = () => (
-  <LinkCard previewData={previewData} postData={postData} />
-);
+export const DefaultLinkCard = () => {
+  const [activeLinkDetails, setActiveLinkDetails] = useState({});
+  const changeActiveLinkDetails = (linkId, selectedPanel) => {
+    const { panel, id } = activeLinkDetails;
+    if (id === linkId && selectedPanel === panel) {
+      setActiveLinkDetails({}); 
+    } else {
+      setActiveLinkDetails({ id: linkId, panel: selectedPanel });
+    }
+  };
+  return <LinkCard
+    previewData={previewData}
+    postData={postData}
+    id='1'
+    activeLinkDetails={activeLinkDetails}
+    changeActiveLinkDetails={changeActiveLinkDetails}
+  />;
+};
 
-export const LinkCardWhileLoading = () => (
-  <LinkCard previewData={null} postData={postData} />
-);
+export const LinkCardWhileLoading = () => {
+  return <LinkCard previewData={null} postData={postData} />;
+};

@@ -48,6 +48,7 @@ export const HiddenSheetFromBottom = () => {
         onToggle={onToggle}
         originDirection="bottom"
         closeIcon
+        onClose={onToggle}
       >
         <div
           style={{

@@ -18,6 +18,7 @@ const Container = styled.div`
     width: 20px;
     border: 1px solid;
     border-radius: 100%;
+    cursor: pointer;
   }
 
   ${({ originDirection, isOpen }) => {
@@ -80,10 +81,10 @@ const Content = styled.div`
   }}
 `;
 
-const HiddenSheet = ({ children, isOpen, originDirection, closeIcon }) => {
+const HiddenSheet = ({ children, isOpen, originDirection, closeIcon, onClose }) => {
   return (
     <Container isOpen={isOpen} originDirection={originDirection}>
-      {closeIcon && <CloseIcon className="close-icon" title="Close Icon" />}
+      {closeIcon && <CloseIcon className="close-icon" title="Close Icon" onClick={onClose} />}
       <Content originDirection={originDirection} isOpen={isOpen}>
         {children}
       </Content>
@@ -95,7 +96,14 @@ HiddenSheet.propTypes = {
   children: node.isRequired,
   isOpen: bool.isRequired,
   originDirection: oneOf(['bottom', 'right']).isRequired,
-  onToggle: func.isRequired
+  onToggle: func.isRequired,
+  closeIcon: bool,
+  onClose: func
 };
+
+HiddenSheet.defaultProps = {
+  closeIcon: false,
+  onClose: () => {}
+}
 
 export default HiddenSheet;
