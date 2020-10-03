@@ -9,8 +9,6 @@ export const PostDetailsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const UrlContainer = styled.div``;
-
 export const UrlContent = styled.div`
   display: flex;
   justify-content: space-between;

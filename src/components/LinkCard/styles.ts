@@ -31,6 +31,15 @@ export const LeftContent = styled.div`
   }
 `;
 
+export const PostDetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 130px;
+  padding: 15px;
+  box-sizing: border-box;
+`;
+
 export const PostCreationDetails = styled.div`
   display: flex;
   flex-direction: column;

@@ -30,27 +30,21 @@ const DynamicLinkCard = ({
   const themeContext = useContext(ThemeContext);
   return (
     <>
-      <UrlContainer>
-        <UrlContent>
-          <HttpsIcon title="HTTPS Icon" className="httpsIcon" />
-          <Text
-            className="url"
-            level={5}
-            color={themeContext.activeTheme.color3}
-          >
-            https://google.com
-          </Text>
-          <CopyIcon title="Copy Icon" className="copyIcon" onClick={() => {}} />
-        </UrlContent>
-        <Text
-          className="description"
-          level={4}
-          color={themeContext.activeTheme.color1}
-        >
-          Title or Description for the link shared which can go into multiple
-          lines
+      <UrlContent>
+        <HttpsIcon title="HTTPS Icon" className="httpsIcon" />
+        <Text className="url" level={5} color={themeContext.activeTheme.color3}>
+          https://google.com
         </Text>
-      </UrlContainer>
+        <CopyIcon title="Copy Icon" className="copyIcon" onClick={() => {}} />
+      </UrlContent>
+      <Text
+        className="description"
+        level={4}
+        color={themeContext.activeTheme.color1}
+      >
+        Title or Description for the link shared which can go into multiple
+        lines
+      </Text>
       <IconRow>
         <IconSections className="leftSection">
           <IconWithNumber number={comments.length}>

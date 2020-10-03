@@ -7,13 +7,14 @@ import {
   RightContent,
   Post,
   PostCreationDetails,
-  TopDetailsContainer
+  TopDetailsContainer,
+  PostDetailsContainer
 } from './styles';
 import { getTimeAndDate } from '../../utils/methods';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import LinkCardLoader from '../LinkCardLoader/LinkCardLoader';
 import PostPreview from '../PostPreview/PostPreview';
-import PostDetails from '../PostDetails/PostDetails';
+import PostDetails from '../PostDetailsV2/PostDetails';
 import { ThemeContext } from 'styled-components';
 
 const LinkCard = ({
@@ -61,17 +62,18 @@ const LinkCard = ({
             </TopDetailsContainer>
           }
         />
-        <PostDetails
-          selectedPanel={activeLinkDetails.panel}
-          changeActiveLinkDetails={changeActiveLinkDetails}
-          descriptionLineClamp={2}
-          description={postData.description}
-          link={postData.link}
-          comments={postData.comments}
-          taggedUsers={postData.taggedUsers}
-          tags={postData.tags}
-          id={id}
-        />
+        <PostDetailsContainer>
+          <PostDetails
+            comments={['one', 'two']}
+            tags={['one']}
+            taggedUsers={[
+              { image: 'lol' },
+              { image: 'lol2' },
+              { image: 'lo3' },
+              { image: 'lol4' }
+            ]}
+          />
+        </PostDetailsContainer>
       </Post>
     );
   }

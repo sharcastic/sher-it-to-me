@@ -1,5 +1,5 @@
 import React from 'react';
-import DynamicLinkCard from './DynamicLinkCard';
+import PostDetails from './PostDetails';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { ThemeProvider } from 'styled-components';
 import { primaryTheme, typographyTheme } from '../../styles/themes';
@@ -12,8 +12,8 @@ const PreviewWithImageProps = {
 };
 
 export default {
-  title: 'Dynamic Link Card!',
-  component: DynamicLinkCard,
+  title: 'PostDetailsV2',
+  component: PostDetails,
   decorators: [
     withKnobs,
     storyFn => (
@@ -36,7 +36,7 @@ export default {
 };
 
 export const Default = () => (
-  <DynamicLinkCard
+  <PostDetails
     comments={['one', 'two']}
     tags={['one']}
     taggedUsers={[
