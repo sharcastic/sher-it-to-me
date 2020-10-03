@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import LinkCard from './LinkCard';
 import { withKnobs, text } from '@storybook/addon-knobs';
+import { ThemeProvider } from 'styled-components';
+import { primaryTheme, typographyTheme } from '../../styles/themes';
 
 export default {
   title: 'Link Card',
@@ -16,7 +18,11 @@ export default {
           paddingTop: '20px'
         }}
       >
-        {storyFn()}
+        <ThemeProvider
+          theme={{ typography: typographyTheme, activeTheme: primaryTheme }}
+        >
+          {storyFn()}
+        </ThemeProvider>
       </div>
     )
   ]
@@ -45,18 +51,20 @@ export const DefaultLinkCard = () => {
   const changeActiveLinkDetails = (linkId, selectedPanel) => {
     const { panel, id } = activeLinkDetails;
     if (id === linkId && selectedPanel === panel) {
-      setActiveLinkDetails({}); 
+      setActiveLinkDetails({});
     } else {
       setActiveLinkDetails({ id: linkId, panel: selectedPanel });
     }
   };
-  return <LinkCard
-    previewData={previewData}
-    postData={postData}
-    id='1'
-    activeLinkDetails={activeLinkDetails}
-    changeActiveLinkDetails={changeActiveLinkDetails}
-  />;
+  return (
+    <LinkCard
+      previewData={previewData}
+      postData={postData}
+      id="1"
+      activeLinkDetails={activeLinkDetails}
+      changeActiveLinkDetails={changeActiveLinkDetails}
+    />
+  );
 };
 
 export const LinkCardWhileLoading = () => {

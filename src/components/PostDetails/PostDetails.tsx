@@ -20,6 +20,19 @@ import {
   IconContainer
 } from './styles';
 
+interface PostDetailsProps {
+  description: string;
+  link: string;
+  taggedUsers;
+  comments;
+  tags;
+  onCopy: () => void;
+  descriptionLineClamp;
+  selectedPanel;
+  changeActiveLinkDetails;
+  id;
+}
+
 const PostDetails = ({
   description,
   link,

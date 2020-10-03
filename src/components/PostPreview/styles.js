@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: fit-content;
+  height: 150px;
   position: relative;
   color: white;
 `;
@@ -12,7 +12,7 @@ export const Background = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 97%;
+  height: 100%;
   background: linear-gradient(180deg, #091320b3, #0d1528cc 100.73%);
   border-radius: 8px;
 `;

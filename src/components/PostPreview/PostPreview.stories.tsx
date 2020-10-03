@@ -1,6 +1,8 @@
 import React from 'react';
 import PostPreview from './PostPreview';
 import { withKnobs, text } from '@storybook/addon-knobs';
+import { ThemeProvider } from 'styled-components';
+import { primaryTheme, typographyTheme } from '../../styles/themes';
 
 const PreviewWithImageProps = {
   image: 'https://d24cgw3uvb9a9h.cloudfront.net/static/94014/image/thumb.png',
@@ -23,7 +25,11 @@ export default {
           paddingTop: '20px'
         }}
       >
-        {storyFn()}
+        <ThemeProvider
+          theme={{ typography: typographyTheme, activeTheme: primaryTheme }}
+        >
+          {storyFn()}
+        </ThemeProvider>
       </div>
     )
   ]

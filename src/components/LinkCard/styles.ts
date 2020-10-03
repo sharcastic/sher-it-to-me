@@ -34,11 +34,6 @@ export const LeftContent = styled.div`
 export const PostCreationDetails = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 0.67rem;
-
-  &__authorName {
-    font-family: 'Goldplay-Semibold';
-  }
 `;
 
 export const RightContent = styled.div`

@@ -20,6 +20,6 @@ module.exports = async ({ config }) => {
     ],
     include: path.resolve(__dirname, '../')
   });
-
+  config.resolve.extensions.push('.ts', '.tsx');
   return config;
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 export const PostDetailsContainer = styled.div`
   padding: 12px 15px 10px 15px;

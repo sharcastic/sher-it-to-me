@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+p {
+  margin: 0;
+}
+
 @font-face {
   font-family: 'Goldplay-Regular';
   src: url('./assets/fonts/Goldplay\ Regular.otf') format('opentype');
