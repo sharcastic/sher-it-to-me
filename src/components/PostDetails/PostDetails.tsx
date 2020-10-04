@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import IconWithNumber from '../IconWithNumber/IconWithNumber';
 import {
-  UrlContainer,
   UrlContent,
   IconRow,
   IconSections,
@@ -16,24 +15,28 @@ import { AvatarGroup } from '@material-ui/lab';
 import { Text } from 'styled-typography';
 import { ThemeContext } from 'styled-components';
 
-interface DynamicLinkCardProps {
+export interface PostDetailsProps {
   comments: string[];
   tags: string[];
   taggedUsers: { image: string }[];
+  link: string;
+  linkDescription: string;
 }
 
-const DynamicLinkCard = ({
+const PostDetails = ({
   comments,
   tags,
-  taggedUsers
-}: DynamicLinkCardProps) => {
+  taggedUsers,
+  linkDescription,
+  link
+}: PostDetailsProps) => {
   const themeContext = useContext(ThemeContext);
   return (
     <>
       <UrlContent>
         <HttpsIcon title="HTTPS Icon" className="httpsIcon" />
         <Text className="url" level={5} color={themeContext.activeTheme.color3}>
-          https://google.com
+          {link}
         </Text>
         <CopyIcon title="Copy Icon" className="copyIcon" onClick={() => {}} />
       </UrlContent>
@@ -42,8 +45,7 @@ const DynamicLinkCard = ({
         level={4}
         color={themeContext.activeTheme.color1}
       >
-        Title or Description for the link shared which can go into multiple
-        lines
+        {linkDescription}
       </Text>
       <IconRow>
         <IconSections className="leftSection">
@@ -68,4 +70,4 @@ const DynamicLinkCard = ({
   );
 };
 
-export default DynamicLinkCard;
+export default PostDetails;

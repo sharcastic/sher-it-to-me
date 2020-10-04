@@ -11,7 +11,6 @@ export const IconContainer = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 5px;
-  cursor: pointer;
   & span {
     font-family: 'Goldplay-SemiBold';
   }

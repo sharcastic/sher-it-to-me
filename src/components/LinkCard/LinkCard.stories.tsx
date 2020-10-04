@@ -29,44 +29,49 @@ export default {
 };
 
 const previewData = {
-  image: 'https://d24cgw3uvb9a9h.cloudfront.net/static/94014/image/thumb.png',
-  linkURL: 'https://guardian.co.uk',
+  imageUrl:
+    'https://d24cgw3uvb9a9h.cloudfront.net/static/94014/image/thumb.png',
+  link: 'https://guardian.co.uk',
   title: 'Title',
   description: 'Description'
 };
 
-const postData = {
+const postCreationDetails = {
+  authorName: 'Dwight Schrute',
+  authorImageUrl: 'https://i.imgflip.com/4/4t0m5.jpg',
+  createdDate: new Date()
+};
+
+const postDetails = {
+  comments: ['one', 'two'],
+  tags: ['one'],
   taggedUsers: [
-    { image: 'url', name: 'User 1' },
-    { image: 'https://i.imgflip.com/4/4t0m5.jpg', name: 'User 2' },
-    { image: 'url', name: 'User 3' }
+    { image: 'lol' },
+    { image: 'lol2' },
+    { image: 'lo3' },
+    { image: 'lol4' }
   ],
-  tags: ['tags?'],
-  link: 'https://theoffice.com',
-  description: 'Post Description'
+  linkDescription:
+    'Title or Description for the link shared which can go into multiple lines',
+  link: 'https://guardian.co.uk'
 };
 
 export const DefaultLinkCard = () => {
-  const [activeLinkDetails, setActiveLinkDetails] = useState({});
-  const changeActiveLinkDetails = (linkId, selectedPanel) => {
-    const { panel, id } = activeLinkDetails;
-    if (id === linkId && selectedPanel === panel) {
-      setActiveLinkDetails({});
-    } else {
-      setActiveLinkDetails({ id: linkId, panel: selectedPanel });
-    }
-  };
   return (
     <LinkCard
+      postCreationDetails={postCreationDetails}
       previewData={previewData}
-      postData={postData}
-      id="1"
-      activeLinkDetails={activeLinkDetails}
-      changeActiveLinkDetails={changeActiveLinkDetails}
+      postDetails={postDetails}
     />
   );
 };
 
 export const LinkCardWhileLoading = () => {
-  return <LinkCard previewData={null} postData={postData} />;
+  return (
+    <LinkCard
+      previewData={null}
+      postCreationDetails={postCreationDetails}
+      postDetails={postDetails}
+    />
+  );
 };

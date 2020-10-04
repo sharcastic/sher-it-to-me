@@ -60,9 +60,6 @@ export const IconRow = styled.div`
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  svg {
-    cursor: pointer;
-  }
 `;
 
 export const NumberSpan = styled.span`

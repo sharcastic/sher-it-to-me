@@ -4,13 +4,6 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 import { ThemeProvider } from 'styled-components';
 import { primaryTheme, typographyTheme } from '../../styles/themes';
 
-const PreviewWithImageProps = {
-  image: 'https://d24cgw3uvb9a9h.cloudfront.net/static/94014/image/thumb.png',
-  linkURL: 'https://guardian.co.uk',
-  title: 'Title',
-  description: 'Description'
-};
-
 export default {
   title: 'PostDetailsV2',
   component: PostDetails,
@@ -45,5 +38,8 @@ export const Default = () => (
       { image: 'lo3' },
       { image: 'lol4' }
     ]}
+    linkDescription="Title or Description for the link shared which can go into multiple
+    lines"
+    link="https://guardian.co.uk"
   />
 );

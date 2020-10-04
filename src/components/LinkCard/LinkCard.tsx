@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { object } from 'prop-types';
+import React, { useContext, useMemo } from 'react';
 import { Heading, Text } from 'styled-typography';
 
 import {
@@ -14,23 +13,39 @@ import { getTimeAndDate } from '../../utils/methods';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import LinkCardLoader from '../LinkCardLoader/LinkCardLoader';
 import PostPreview from '../PostPreview/PostPreview';
-import PostDetails from '../PostDetailsV2/PostDetails';
+import PostDetails, { PostDetailsProps } from '../PostDetails/PostDetails';
 import { ThemeContext } from 'styled-components';
+
+interface LinkCardProps {
+  previewData: {
+    imageUrl: string;
+    link: string;
+    title: string;
+    description: string;
+  } | null;
+  postCreationDetails: {
+    authorImageUrl: string;
+    createdDate: Date;
+    authorName: string;
+  };
+  postDetails: PostDetailsProps;
+}
 
 const LinkCard = ({
   previewData,
-  postData,
-  id,
-  activeLinkDetails,
-  changeActiveLinkDetails
-}) => {
+  postCreationDetails,
+  postDetails
+}: LinkCardProps) => {
   const { activeTheme } = useContext(ThemeContext);
-  const [time, date] = getTimeAndDate(new Date());
+  const [time, date] = useMemo(
+    () => getTimeAndDate(postCreationDetails.createdDate),
+    [postCreationDetails.createdDate]
+  );
   if (previewData) {
     return (
       <Post>
         <PostPreview
-          image={previewData.image}
+          image={previewData.imageUrl}
           linkURL={previewData.link}
           title={previewData.title}
           description={previewData.description}
@@ -39,7 +54,7 @@ const LinkCard = ({
               <LeftContent>
                 <ProfileIcon
                   className="authorIcon"
-                  img="https://i.imgflip.com/4/4t0m5.jpg"
+                  img={postCreationDetails.authorImageUrl}
                 />
                 <PostCreationDetails>
                   <Heading
@@ -47,7 +62,7 @@ const LinkCard = ({
                     level={6}
                     color={activeTheme.color4}
                   >
-                    Dwight Schrute
+                    {postCreationDetails.authorName}
                   </Heading>
                   <Text
                     className="timeCreated"
@@ -63,26 +78,12 @@ const LinkCard = ({
           }
         />
         <PostDetailsContainer>
-          <PostDetails
-            comments={['one', 'two']}
-            tags={['one']}
-            taggedUsers={[
-              { image: 'lol' },
-              { image: 'lol2' },
-              { image: 'lo3' },
-              { image: 'lol4' }
-            ]}
-          />
+          <PostDetails {...postDetails} />
         </PostDetailsContainer>
       </Post>
     );
   }
   return <LinkCardLoader />;
-};
-
-LinkCard.propTypes = {
-  previewData: object.isRequired,
-  postData: object.isRequired
 };
 
 export default LinkCard;
