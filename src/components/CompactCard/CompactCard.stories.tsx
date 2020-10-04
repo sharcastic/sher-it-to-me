@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import LinkCard from './LinkCard';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import React from 'react';
+import CompactCard from './CompactCard';
+import { withKnobs } from '@storybook/addon-knobs';
 import { ThemeProvider } from 'styled-components';
 import { primaryTheme, typographyTheme } from '../../styles/themes';
 
 export default {
-  title: 'Link Card',
-  component: LinkCard,
+  title: 'Compact Card',
+  component: CompactCard,
   decorators: [
     withKnobs,
     storyFn => (
@@ -26,14 +26,6 @@ export default {
       </div>
     )
   ]
-};
-
-const previewData = {
-  imageUrl:
-    'https://d24cgw3uvb9a9h.cloudfront.net/static/94014/image/thumb.png',
-  link: 'https://guardian.co.uk',
-  title: 'Title',
-  description: 'Description'
 };
 
 const postCreationDetails = {
@@ -58,20 +50,11 @@ const postDetails = {
 
 export const DefaultLinkCard = () => {
   return (
-    <LinkCard
-      previewData={previewData}
+    <CompactCard
       postDetails={postDetails}
-      {...postCreationDetails}
-    />
-  );
-};
-
-export const LinkCardWhileLoading = () => {
-  return (
-    <LinkCard
-      previewData={null}
-      {...postCreationDetails}
-      postDetails={postDetails}
+      authorName="Dwight Schrute"
+      createdDate={new Date()}
+      description="Description for the Card!"
     />
   );
 };

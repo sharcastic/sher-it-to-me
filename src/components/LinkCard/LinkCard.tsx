@@ -23,24 +23,23 @@ interface LinkCardProps {
     title: string;
     description: string;
   } | null;
-  postCreationDetails: {
-    authorImageUrl: string;
-    createdDate: Date;
-    authorName: string;
-  };
+  authorImageUrl: string;
+  createdDate: Date;
+  authorName: string;
   postDetails: PostDetailsProps;
 }
 
 const LinkCard = ({
   previewData,
-  postCreationDetails,
+  authorImageUrl,
+  createdDate,
+  authorName,
   postDetails
 }: LinkCardProps) => {
   const { activeTheme } = useContext(ThemeContext);
-  const [time, date] = useMemo(
-    () => getTimeAndDate(postCreationDetails.createdDate),
-    [postCreationDetails.createdDate]
-  );
+  const [time, date] = useMemo(() => getTimeAndDate(createdDate), [
+    createdDate
+  ]);
   if (previewData) {
     return (
       <Post>
@@ -52,17 +51,14 @@ const LinkCard = ({
           topSection={
             <TopDetailsContainer>
               <LeftContent>
-                <ProfileIcon
-                  className="authorIcon"
-                  img={postCreationDetails.authorImageUrl}
-                />
+                <ProfileIcon className="authorIcon" img={authorImageUrl} />
                 <PostCreationDetails>
                   <Heading
                     className="authorName"
                     level={6}
                     color={activeTheme.color4}
                   >
-                    {postCreationDetails.authorName}
+                    {authorName}
                   </Heading>
                   <Text
                     className="timeCreated"

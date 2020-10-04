@@ -3,7 +3,8 @@ export const primaryTheme = {
   color2: '#C4C4C4',
   color3: '#27AE8E',
   color4: '#FFFFFF',
-  color5: '#FF7272'
+  color5: '#FF7272',
+  color6: '#8590AC'
 };
 
 export const typographyTheme = {
